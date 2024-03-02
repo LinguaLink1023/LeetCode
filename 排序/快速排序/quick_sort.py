@@ -36,19 +36,42 @@ def exchange(nums, start, end):
         nums[start], nums[green_final_pos] = nums[green_final_pos], nums[start]
     return green_final_pos
 
-def quick_sort_recursion(nums, start, end):
-    if end - start > 0: # 递归的结束条件是数组只有一个元素
-        mid = exchange(nums, start, end)
-        quick_sort_recursion(nums, start, mid - 1)
-        quick_sort_recursion(nums, mid + 1, end)
+# def quick_sort_recursion(nums, start, end):
+#     if end - start > 0: # 递归的结束条件是数组只有一个元素
+#         mid = exchange(nums, start, end)
+#         quick_sort_recursion(nums, start, mid - 1)
+#         quick_sort_recursion(nums, mid + 1, end)
+
+def partition(nums, start, end):
+    mid = start + (end - start) // 2
+    pivot = sorted([nums[start], nums[mid], nums[end]])[1]
+    # #或者
+    # mid = random.randint(start, end)
+    # pivot = nums[mid]
+    while start <= end:
+        while nums[start] < pivot:
+            start += 1
+        while nums[end] > pivot:
+            end -= 1
+        if start <= end:
+            nums[start], nums[end] = nums[end], nums[start]
+            start, end = start + 1, end - 1
+    return start
+
+def quick_sort_recursion(nums, start, end, k):
+    if end > start:
+        mid = partition(nums, start, end)
+        if mid + 1 == k:
+            return mid + 1
+        elif mid + 1 < k:
+            return quick_sort_recursion(nums, start, mid - 1, k)
+        else:
+            return quick_sort_recursion(nums, mid, end, k)      
+
 
 @d_calculate_execute_time
-def quick_sort(nums):
-    quick_sort_recursion(nums, 0, len(nums) - 1)
-    return nums
+def quick_sort(nums, k):
+    return quick_sort_recursion(nums, 0, len(nums) - 1, k)
 nums = [4, -1, 5, -1, 9, 6, 7, 7, 3, 2, 1]
+print(quick_sort(nums, 2))
 
-print(exchange(nums, 0, len(nums) - 1))
-
-quick_sort(nums)
-print(nums)
