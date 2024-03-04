@@ -58,20 +58,22 @@ def partition(nums, start, end):
             start, end = start + 1, end - 1
     return start
 
-def quick_sort_recursion(nums, start, end, k):
+def quick_sort_recursion(nums, start, end):
     if end > start:
         mid = partition(nums, start, end)
-        if mid + 1 == k:
-            return mid + 1
-        elif mid + 1 < k:
-            return quick_sort_recursion(nums, start, mid - 1, k)
-        else:
-            return quick_sort_recursion(nums, mid, end, k)      
+        print(f"mid = {mid}")
+        print(nums[start:mid])
+        print(nums[mid:end + 1])
+        print("----------")
+        quick_sort_recursion(nums, start, mid - 1)
+        quick_sort_recursion(nums, mid, end)      
 
 
 @d_calculate_execute_time
-def quick_sort(nums, k):
-    return quick_sort_recursion(nums, 0, len(nums) - 1, k)
-nums = [4, -1, 5, -1, 9, 6, 7, 7, 3, 2, 1]
-print(quick_sort(nums, 2))
+def quick_sort(nums):
+    quick_sort_recursion(nums, 0, len(nums) - 1)
+    return nums
+nums = [3,2,3,1,2,4,5,5,6]
+print(quick_sort(nums))
+
 
