@@ -1,7 +1,7 @@
 
 def partition(nums, left, right):
-    mid = left + (right - left) // 2
-    pivot = nums[mid]
+    # 因为只有0，1,2 这三个元素
+    pivot = 1
     
     less = left
     while left <= right:
@@ -16,14 +16,14 @@ def partition(nums, left, right):
             left += 1
     return less - 1, right + 1
 
-def quick_sort_recursion(nums, left, right):
-    if right > left:
-        left_end, right_start = partition(nums, left, right)
-        quick_sort_recursion(nums, left, left_end)
-        quick_sort_recursion(nums, right_start, right)
+# def quick_sort_recursion(nums, left, right):
+#     if right > left:
+#         left_end, right_start = partition(nums, left, right)
+#         quick_sort_recursion(nums, left, left_end)
+#         quick_sort_recursion(nums, right_start, right)
         
 def quick_sort(nums):
-    quick_sort_recursion(nums, 0, len(nums) - 1)
+    partition(nums, 0, len(nums) - 1)
     return nums
 
 nums = [2, 0, 2, 1, 1, 0]
