@@ -1,7 +1,7 @@
-from leetcode_data import nums
+from 排序.leetcode_data import nums
 import time
 import random
-from calculate_execute_time import d_calculate_execute_time
+from 排序.calculate_execute_time import d_calculate_execute_time
 
 
 

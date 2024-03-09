@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./排序/快速排序/Python"
+    ]
+}
