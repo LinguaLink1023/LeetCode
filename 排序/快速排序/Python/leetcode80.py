@@ -1,4 +1,4 @@
-from leetcode_data import nums
+from 排序.leetcode_data import nums
 
 def removeDuplicates(nums):
     start, prob, current_duplicates = 0, 1, 1
