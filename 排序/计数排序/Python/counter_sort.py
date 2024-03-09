@@ -1,7 +1,7 @@
 import sys
 sys.path.append('/Users/zengxiaowei/STUDY/Github/LeetCode/Python_Engineer/Sort/QuickSort/Python')
-from calculate_execute_time import d_calculate_execute_time
-from leetcode_data import nums
+from 排序.calculate_execute_time import d_calculate_execute_time
+from 排序.leetcode_data import nums
 
 
 @d_calculate_execute_time
